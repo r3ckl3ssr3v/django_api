@@ -25,7 +25,19 @@ SECRET_KEY = 'django-insecure-z5&#d*iyfhhyu1rqtlbfu^67o*^*m8#8*jnpc-0_m(o3os%-p9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://c293-2405-201-a000-7246-85d7-7d80-6773-fa.ngrok-free.app',
+    'https://c293-2405-201-a000-7246-85d7-7d80-6773-fa.ngrok-free.app'  # Add any other ngrok URLs here
+]
+
+CSRF_COOKIE_SECURE = False
+
+# Angel Broking API Credentials
+ANGEL_API_KEY = "GtfGMnnr"
+ANGEL_API_SECRET = "95726276-b0c6-4e6d-8fe5-786737d49a55"
+ANGEL_REDIRECT_URI = "http://127.0.0.1:8000/angel_callback/"
 
 
 # Application definition

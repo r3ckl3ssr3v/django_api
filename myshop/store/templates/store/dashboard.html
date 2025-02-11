@@ -1,2 +1,4 @@
 <h2>Welcome to the Dashboard</h2>
-<p>You are logged in! <a href="{% url 'add_product' %}">Add a Product</a></p>
+<p>Your Portfolio Details:</p>
+<pre>{{ portfolio_data | json_script }}</pre>
+<a href="{% url 'add_product' %}">Add a Product</a>
