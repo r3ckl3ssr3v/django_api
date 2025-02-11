@@ -18,7 +18,7 @@ Before starting, ensure you have the following tools installed on your system:
 
 Begin by cloning the repository to your local machine. If you have a GitHub repository, use the following command:
 
-- git clone https://github.com/your-username/your-repository-name.git
+- git clone [https://github.com/your-username/your-repository-name.git](https://github.com/r3ckl3ssr3v/django_api.git)
 - cd your-repository-name
 
 ### 2. Set Up a Virtual Environment
