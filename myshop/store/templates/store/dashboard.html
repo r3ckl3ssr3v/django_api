@@ -1,4 +1,56 @@
-<h2>Welcome to the Dashboard</h2>
-<p>Your Portfolio Details:</p>
-<pre>{{ portfolio_data | json_script }}</pre>
-<a href="{% url 'add_product' %}">Add a Product</a>
+<!-- dashboard.html -->
+{% extends 'store/base.html' %}
+
+{% block content %}
+    {% if request.session.profile_error %}
+        <div class="alert alert-danger">
+            {{ request.session.profile_error }}
+        </div>
+    {% endif %}
+
+    {% if user_profile %}
+        <div class="profile-section">
+            <h2>Welcome, {{ user_profile.name|default:"User" }}</h2>
+            
+            <div class="profile-details">
+                <div class="basic-info">
+                    <h3>Basic Information</h3>
+                    <p><strong>Client Code:</strong> {{ user_profile.client_code }}</p>
+                    <p><strong>Email:</strong> {{ user_profile.email }}</p>
+                    <p><strong>Phone Number:</strong> {{ user_profile.phone_number }}</p>
+                    <p><strong>Broker ID:</strong> {{ user_profile.broker_id }}</p>
+                    {% if user_profile.last_login %}
+                        <p><strong>Last Login:</strong> {{ user_profile.last_login }}</p>
+                    {% endif %}
+                </div>
+
+                <div class="trading-info">
+                    <h3>Trading Information</h3>
+                    {% if user_profile.exchanges %}
+                        <div class="exchanges">
+                            <h4>Available Exchanges</h4>
+                            <ul>
+                                {% for exchange in user_profile.exchanges %}
+                                    <li>{{ exchange }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    {% if user_profile.products %}
+                        <div class="products">
+                            <h4>Available Products</h4>
+                            <ul>
+                                {% for product in user_profile.products %}
+                                    <li>{{ product }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>Your profile is not available. Please try logging in again.</p>
+    {% endif %}
+{% endblock %}

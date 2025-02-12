@@ -22,6 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-z5&#d*iyfhhyu1rqtlbfu^67o*^*m8#8*jnpc-0_m(o3os%-p9'
 
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -29,15 +31,23 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
     'https://c293-2405-201-a000-7246-85d7-7d80-6773-fa.ngrok-free.app',
-    'https://c293-2405-201-a000-7246-85d7-7d80-6773-fa.ngrok-free.app'  # Add any other ngrok URLs here
+    'https://c293-2405-201-a000-7246-85d7-7d80-6773-fa.ngrok-free.app',
+    "https://5379-2405-201-a000-7246-6460-da54-caee-5e90.ngrok-free.app"  # Add any other ngrok URLs here
 ]
 
 CSRF_COOKIE_SECURE = False
 
 # Angel Broking API Credentials
-ANGEL_API_KEY = "GtfGMnnr"
-ANGEL_API_SECRET = "95726276-b0c6-4e6d-8fe5-786737d49a55"
-ANGEL_REDIRECT_URI = "http://127.0.0.1:8000/angel_callback/"
+ANGEL_API_KEY = "D9OHxPR8"
+ANGEL_API_SECRET = "de1243e8-c959-49ee-811e-488733e6920a"
+ANGEL_REDIRECT_URI = "https://5379-2405-201-a000-7246-6460-da54-caee-5e90.ngrok-free.app/angel-one-callback/"
+
+# Angel One API Login URL
+ANGEL_ONE_LOGIN_URL = "https://smartapi.angelone.in/publisher-login?api_key={}&state={}&redirect_uri={}".format(
+    ANGEL_API_KEY, 
+    "statevariable", 
+    ANGEL_REDIRECT_URI
+)
 
 
 # Application definition
@@ -134,3 +144,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SESSION_ENGINE = "django.contrib.sessions.backends.db"  # Store in DB
+SESSION_COOKIE_AGE = 86400  # 1-day session
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_COOKIE_SECURE = False  # Only if using HTTPS
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_NAME = "sessionid"
