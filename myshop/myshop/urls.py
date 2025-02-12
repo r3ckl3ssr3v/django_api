@@ -16,9 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from store.views import get_angel_profile, dashboard, angel_one_callback, home, user_login
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('store.urls')),
+    path("dashboard/", dashboard, name="dashboard"),
+    path('', home, name='home'),
+    path('login/', user_login, name='login'),
+    path('callback/', angel_one_callback, name='angel-callback'),
+    path('profile/', get_angel_profile, name='get-angel-profile'),
+    path('dashboard/',  dashboard, name='dashboard'),
 ]
 
